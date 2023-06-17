@@ -30,14 +30,7 @@ module.exports = {
           type: Sequelize.STRING(12),
           allowNull: false,
         },
-        petId: {
-          allowNull: false,
-          type: Sequelize.STRING(36),
-          references: {
-            model: 'pet',
-            key: 'id',
-          },
-        }
+       
       });
 
     return User;

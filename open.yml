@@ -1,3 +1,4 @@
+
 openapi: "3.0.0"
 info:
   title: PetComilao api
@@ -260,28 +261,3 @@ components:
         password:
           format: string
           example: 123456
-        address:
-          type: object
-          properties:
-            street:
-              format: string
-              example: rua 1
-            number:
-              format: string
-              example: 123
-            complement:
-              format: string
-              example: casa
-            neighborhood:
-              format: string
-              example: centro
-            city:
-              format: string
-              example: franca
-            state:
-              format: string
-              example: sp
-            zipCode:
-              format: string
-              example: 14400-000
-          

@@ -1,0 +1,467 @@
+openapi: "3.0.0"
+info:
+  title: PetComilao api
+  description: Api to manipulate info of orders
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: matheus.ferreira70@fatec.sp.gov.br
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+tags:
+  - name: pet
+    description: Operations to handle products info
+paths:
+  /pets:
+    get:
+      tags:
+        - pet
+      summary: List pets
+      parameters:
+        - name: pet.name
+          in: query
+          description: Name of the pet
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Pets found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Pet"
+    post:
+      tags:
+        - pet
+      summary: Create a new pet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Pet"
+      responses:
+        "200":
+          description: OK
+
+  /pets/{id}:
+    get:
+      tags:
+        - pet
+      summary: Get pet by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the pet
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Pet found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pet"
+    put:
+      tags:
+        - pet
+      summary: Update pet by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the pet
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+        - pet
+      summary: Delete a pet
+      parameters:
+        - name: id
+          in: path
+          description: ID of the pet to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Pet successfully deleted
+        "404":
+          description: Pet not found
+
+
+  /users:
+    get:
+      summary: Retrieve the list of registered users
+      operationId: getUsers
+      tags:
+        - Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+      security:
+        - api_key: []
+
+    post:
+      summary: Create a new user
+      operationId: createUser
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Created
+      security:
+        - api_key: []
+
+  /users/{id}:
+    get:
+      summary: Get a specific user by ID
+      operationId: getUserById
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the user
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      security:
+        - api_key: []
+
+    put:
+      summary: Update an existing user by ID
+      operationId: updateUserById
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the user
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '204':
+          description: No Content
+      security:
+        - api_key: []
+
+    delete:
+      summary: Remove an existing user by ID
+      operationId: deleteUserById
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the user
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+      security:
+        - api_key: []
+
+  /food:
+    get:
+      tags:
+        - food
+      summary: List food items
+      responses:
+        "200":
+          description: Food items found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Food"
+    post:
+      tags:
+        - food
+      summary: Create a new food item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Food"
+      responses:
+        "200":
+          description: OK
+  /food/{id}:
+    delete:
+      tags:
+        - food
+      summary: Delete a food item
+      parameters:
+        - name: id
+          in: path
+          description: ID of the food item to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Food item successfully deleted
+        "404":
+          description: Food item not found
+    put:
+      tags:
+        - food
+      summary: Update food item by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the food item
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+  /petFeeder:
+    get:
+      tags:
+        - petFeeder
+      summary: List pet feeders
+      responses:
+        "200":
+          description: Pet feeders found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PetFeeder"
+    post:
+      tags:
+        - petFeeder
+      summary: Create a new pet feeder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PetFeeder"
+      responses:
+        "200":
+          description: OK
+  /petFeeder/{id}:
+    delete:
+      tags:
+        - petFeeder
+      summary: Delete a pet feeder
+      parameters:
+        - name: id
+          in: path
+          description: ID of the pet feeder to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Pet feeder successfully deleted
+        "404":
+          description: Pet feeder not found
+    put:
+      tags:
+        - petFeeder
+      summary: Update pet feeder by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the pet feeder
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+  /weight_month:
+    get:
+      tags:
+        - weight_month
+      summary: List weight records per month
+      responses:
+        "200":
+          description: Weight records found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WeightMonth"
+    post:
+      tags:
+        - weight_month
+      summary: Create a new weight record per month
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WeightMonth"
+      responses:
+        "200":
+          description: OK
+  /weight_month/{id}:
+    delete:
+      tags:
+        - weight_month
+      summary: Delete a weight record per month
+      parameters:
+        - name: id
+          in: path
+          description: ID of the weight record to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Weight record successfully deleted
+        "404":
+          description: Weight record not found
+    put:
+      tags:
+        - weight_month
+      summary: Update weight record by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the weight record
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        type:
+          type: string
+        breed:
+          type: string
+        gender:
+          type: string
+        birthdate:
+          type: string
+          format: date
+        weight:
+          type: number
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        cpf:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    Food:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        petId:
+          type: string
+        petFeederId:
+          type: string
+        dateAliment:
+          type: string
+          format: date
+        quantity:
+          type: number
+        success:
+          type: boolean
+    PetFeeder:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        hourStart:
+          type: string
+          format: time
+        quantityGrams:
+          type: number
+        petId:
+          type: string
+    WeightMonth:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        weight:
+          type: number
+        width:
+          type: number
+        height:
+          type: number
+        date:
+          type: string
+          format: date
+        age_per_month:
+          type: string
+        quantityMonth:
+          type: number
+        petId:
+          type: string
+          

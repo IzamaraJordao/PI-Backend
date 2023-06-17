@@ -9,7 +9,7 @@ module.exports = {
         phone: generateRandomPhone(),
         email: generateRandomEmail(),
         passWord: generateRandomPassword(),
-        petId: generateRandomPetId(),
+       
       };
       users.push(user);
     }
@@ -53,13 +53,6 @@ function generateRandomPassword() {
   return generateRandomString(8);
 }
 
-function generateRandomPetId() {
-  const petIds = [];
-  for (let i = 1; i <= 150; i++) {
-    petIds.push(i.toString());
-  }
-  return petIds[Math.floor(Math.random() * petIds.length)];
-}
 
 function generateRandomString(length) {
   const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

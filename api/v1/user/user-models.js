@@ -32,15 +32,6 @@ const User = db.define('user', {
         type: Sequelize.STRING,
         allowNull: false,
        
-    },
-    petId:{
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references:{
-            model: 'Pet',
-            key: 'id'
-        }
-
     }
     
 

@@ -23,15 +23,15 @@ module.exports = {
 };
 
 function generateRandomWeight() {
-  return (Math.random() * (20 - 0) + 0).toFixed(2);
+  return Math.floor(Math.random() * (3500 - 1500 + 1)) + 1500;
 }
 
 function generateRandomWidth() {
-  return (Math.random() * (80 - 0) + 0).toFixed(2);
+  return Math.floor(Math.random() * (80 - 20 + 1)) + 20;
 }
 
 function generateRandomHeight() {
-  return (Math.random() * (60 - 0) + 0).toFixed(2);
+  return Math.floor(Math.random() * (60 - 15 + 1)) + 15;
 }
 
 function generateRandomDate() {
@@ -52,7 +52,7 @@ function generateRandomDate() {
 }
 
 function generateRandomAgePerMonth() {
-  return (Math.random() * (10 - 0) + 0).toFixed(2);
+  return Math.floor(Math.random() * 25);
 }
 
 function generateRandomPetId() {

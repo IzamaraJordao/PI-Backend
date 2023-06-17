@@ -10,7 +10,7 @@ const create = async (request, h) => {
       email: payload.email,
       phone: payload.phone,
       password: payload.password,
-      petId: payload.petId,
+      
       
     };
     const result = toPayload(await userBusiness.create(user));
@@ -76,7 +76,7 @@ const toPayload = (userModel) => {
                 email: c.email,
                 phone: c.phone,
                 password: c.password,
-                petId:c.petId,
+               
                 
             });
         });
@@ -89,7 +89,7 @@ const toPayload = (userModel) => {
             email: userModel.email,
             phone: userModel.phone,
             password: userModel.password,
-            petId:userModel.petId,
+            
            
         }
         return payload;
