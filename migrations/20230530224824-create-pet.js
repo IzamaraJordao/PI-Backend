@@ -34,6 +34,10 @@ module.exports = {
           type: Sequelize.FLOAT,
           allowNull: false,
         },
+        userId: {
+          type: Sequelize.STRING(36),
+          allowNull: false,
+        },
 
        
       });

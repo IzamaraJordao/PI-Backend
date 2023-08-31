@@ -10,6 +10,7 @@ module.exports = {
         gender: generateRandomGender(),
         birthDate: generateRandomDate(),
         weigth: generateRandomWeight(),
+        userId: generateRandomUserId(),
       };
       pets.push(pet);
     }
@@ -20,6 +21,13 @@ module.exports = {
   }
 };
 
+function generateRandomUserId() {
+  const userIds = [];
+  for (let i = 1; i <= 150; i++) {
+    userIds.push(i.toString());
+  }
+  return userIds[Math.floor(Math.random() * userIds.length)];
+}
 function generateRandomName() {
   const names = ['Maggie', 'Buddy', 'Max', 'Lucy', 'Charlie', 'Daisy', 'Rocky', 'Lola', 'Bailey', 'Sadie'];
   return names[Math.floor(Math.random() * names.length)];

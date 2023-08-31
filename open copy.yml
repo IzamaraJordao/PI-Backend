@@ -395,6 +395,8 @@ components:
           format: date
         weight:
           type: number
+        userId:
+          type: string
 
     User:
       type: object

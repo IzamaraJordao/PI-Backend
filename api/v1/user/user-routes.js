@@ -8,7 +8,7 @@ const plugin = {
         server.route([
             {
                 method: "GET",
-                path: "/user",
+                path: "/users",
                 handler: find
             },
             {

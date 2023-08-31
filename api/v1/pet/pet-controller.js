@@ -14,6 +14,7 @@ const create = async (request, h) => {
       gender: payload.gender,
       birthDate: payload.birthDate,
       weigth: payload.weigth,
+      userId: payload.userId,
       
     };
     const result = toPayload(await petBusiness.create(pet));
@@ -83,6 +84,7 @@ const toPayload = (petModel) => {
                 gender:c.gender,
                 birthDate: c.birthDate,
                 weigth: c.weigth,
+                userId: payload.userId,
                 
             });
         });
@@ -96,6 +98,7 @@ const toPayload = (petModel) => {
             gender:petModel.gender,
             birthDate: petModel.birthDate,
             weigth: petModel.weigth,
+            userId: payload.userId,
            
         }
         return payload;
